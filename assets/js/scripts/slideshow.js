@@ -28,41 +28,41 @@ function open() {
 	modal.style.display = "block";
   console.log(event.target.id)
 
-  if (event.target.id == 'pic1') {
-    slideIndex = 1;
-  } else if (event.target.id == 'pic2') {
-    slideIndex = 2;
-  } else if (event.target.id == 'pic3') {
-    slideIndex = 3;
-  } else if (event.target.id == 'pic4') {
-    slideIndex = 4;
-  } else if (event.target.id == 'pic5') {
-    slideIndex = 5;
-  } else if (event.target.id == 'pic6') {
-    slideIndex = 6;
-  } else if (event.target.id == 'pic7') {
-    slideIndex = 7;
-  } else if (event.target.id == 'pic8') {
-    slideIndex = 8;
-  } else if (event.target.id == 'pic9') {
-    slideIndex = 9;
-  } else if (event.target.id == 'pic10') {
-    slideIndex = 10;
-  } else if (event.target.id == 'pic11') {
-    slideIndex = 11;
-  } else if (event.target.id == 'pic12') {
-    slideIndex = 12;
-  } else if (event.target.id == 'pic13') {
-    slideIndex = 13;
-  } else if (event.target.id == 'pic14') {
-    slideIndex = 14;
-  } else if (event.target.id == 'pic15') {
-    slideIndex = 15;
-  } else if (event.target.id == 'pic16'){
-    slideIndex = 16;
-  }
+  // if (event.target.id == 'pic1') {
+  //   slideIndex = 1;
+  // } else if (event.target.id == 'pic2') {
+  //   slideIndex = 2;
+  // } else if (event.target.id == 'pic3') {
+  //   slideIndex = 3;
+  // } else if (event.target.id == 'pic4') {
+  //   slideIndex = 4;
+  // } else if (event.target.id == 'pic5') {
+  //   slideIndex = 5;
+  // } else if (event.target.id == 'pic6') {
+  //   slideIndex = 6;
+  // } else if (event.target.id == 'pic7') {
+  //   slideIndex = 7;
+  // } else if (event.target.id == 'pic8') {
+  //   slideIndex = 8;
+  // } else if (event.target.id == 'pic9') {
+  //   slideIndex = 9;
+  // } else if (event.target.id == 'pic10') {
+  //   slideIndex = 10;
+  // } else if (event.target.id == 'pic11') {
+  //   slideIndex = 11;
+  // } else if (event.target.id == 'pic12') {
+  //   slideIndex = 12;
+  // } else if (event.target.id == 'pic13') {
+  //   slideIndex = 13;
+  // } else if (event.target.id == 'pic14') {
+  //   slideIndex = 14;
+  // } else if (event.target.id == 'pic15') {
+  //   slideIndex = 15;
+  // } else if (event.target.id == 'pic16'){
+  //   slideIndex = 16;
+  // }
 
-  showSlides(slideIndex);
+  // showSlides(slideIndex);
 };
 
 
@@ -78,40 +78,57 @@ window.onclick = function(event) {
 }
 
 
-function showSlides(n) {
-  // console.log("showslides index: " + slideIndex)
+var slideIndex = 0;
+showSlides();
+
+// should be random each time
+function showSlides() {
   var i;
   var slides = document.getElementsByClassName("mySlides");
-  // console.log("slideshow length: ", slides.length)
-
-// edge cases: 
-  if (n > slides.length) {
-    slideIndex = 1
-  }
-
-  // if (n < 1) {
-  //   slideIndex = slides.length
-  // }
-
-  // remove all the displays
   for (i = 0; i < slides.length; i++) {
     slides[i].style.display = "none";
   }
-
-  // show image (add displays)
-  slides[slideIndex-1].style.display = "block";
-
-  // increment
   slideIndex++;
-  // repeat index
-  if (slideIndex > slides.length) {
-    slideIndex = 1;
-  }
-
-  // repeat
+  if (slideIndex > slides.length) {slideIndex = 1}
+  slides[slideIndex-1].style.display = "block";
   setTimeout(showSlides, 2000); // Change image every 2 seconds
-
 }
+
+
+// function showSlides(n) {
+//   // console.log("showslides index: " + slideIndex)
+//   var i;
+//   var slides = document.getElementsByClassName("mySlides");
+//   // console.log("slideshow length: ", slides.length)
+
+// // edge cases: 
+//   if (n > slides.length) {
+//     slideIndex = 1
+//   }
+
+//   // if (n < 1) {
+//   //   slideIndex = slides.length
+//   // }
+
+//   // remove all the displays
+//   for (i = 0; i < slides.length; i++) {
+//     slides[i].style.display = "none";
+//   }
+
+//   // show image (add displays)
+//   slides[slideIndex-1].style.display = "block";
+
+//   // increment
+//   slideIndex++;
+//   // repeat index
+//   if (slideIndex > slides.length) {
+//     slideIndex = 1;
+//   }
+
+//   // repeat
+//   setTimeout(showSlides, 2000); // Change image every 2 seconds
+
+// }
 
 
 

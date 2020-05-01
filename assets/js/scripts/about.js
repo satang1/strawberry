@@ -1,98 +1,104 @@
 
 // ----------------STRAWBERRIES---------------
 // DRAGGING OBJECT 
-const position = { x: 0, y: 0 }
 
-interact('#strawberry1').draggable({
-  listeners: {
-    start (event) {
-      console.log(event.type, event.target)
-    },
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
+function dragMoveListener (event) {
+  var target = event.target
+  // keep the dragged position in the data-x/data-y attributes
+  var x = (parseFloat(target.getAttribute('data-x')) || 0) + event.dx
+  var y = (parseFloat(target.getAttribute('data-y')) || 0) + event.dy
 
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-})
+  // translate the element
+  target.style.webkitTransform =
+    target.style.transform =
+      'translate(' + x + 'px, ' + y + 'px)'
+
+  // update the posiion attributes
+  target.setAttribute('data-x', x)
+  target.setAttribute('data-y', y)
+}
+
+// this function is used later in the resizing and gesture demos
+window.dragMoveListener = dragMoveListener
 
 
-interact('#strawberry2').draggable({
-  listeners: {
-    start (event) {
-      console.log(event.type, event.target)
-    },
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
+// target elements with the "draggable" class
+interact('#strawberry1')
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    autoScroll: true,
 
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-})
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+    }
+  })
 
-interact('#strawberry3').draggable({
-  listeners: {
-    start (event) {
-      console.log(event.type, event.target)
-    },
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
 
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-})
+interact('#strawberry2')
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    autoScroll: true,
 
-interact('#strawberry4').draggable({
-  listeners: {
-    start (event) {
-      console.log(event.type, event.target)
-    },
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+    }
+  })
 
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-})
 
-interact('#strawberry5').draggable({
-  listeners: {
-    start (event) {
-      console.log(event.type, event.target)
-    },
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
+interact('#strawberry3')
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    autoScroll: true,
 
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-})
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+    }
+  })
 
-interact('#strawberry6').draggable({
-  listeners: {
-    start (event) {
-      console.log(event.type, event.target)
-    },
-    move (event) {
-      position.x += event.dx
-      position.y += event.dy
 
-      event.target.style.transform =
-        `translate(${position.x}px, ${position.y}px)`
-    },
-  }
-})
+interact('#strawberry4')
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    autoScroll: true,
+
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+    }
+  })
+
+
+interact('#strawberry5')
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    autoScroll: true,
+
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+    }
+  })
+
+interact('#strawberry6')
+  .draggable({
+    // enable inertial throwing
+    inertia: true,
+    autoScroll: true,
+
+    listeners: {
+      // call this function on every dragmove event
+      move: dragMoveListener,
+    }
+  })
+
 
 // -------------------------------------------
 
@@ -107,15 +113,15 @@ interact("#drop-berry-region").dropzone({
 		if (event.relatedTarget.id == "strawberry1") {
 			alert("Before we figured out her name, we use to call her 'Strawberry' ")
 		} else if (event.relatedTarget.id == "strawberry2"){
-			alert("fun facts 2")
+			alert("After watching Frozen, she decided that her name would be Anna. Omg. ")
 		} else if (event.relatedTarget.id == "strawberry3") {
-			alert("fun facts 3")
+			alert("She likes taking long walks with her mom and dad.")
 		} else if (event.relatedTarget.id == "strawberry4") {
-			alert("fun facts 4")
+			alert("Her favorite movie is, of course, Frozen.")
 		} else if (event.relatedTarget.id == "strawberry5") {
-			alert("fun facts 5")
+			alert("And her go-to karaoke song is 'Let it Go!'")
 		} else {
-			alert("fun facts 6")
+			alert("According to her parents, shes also being going to be a 'doctor' when she grows up. ")
 		}
 	}
 });
